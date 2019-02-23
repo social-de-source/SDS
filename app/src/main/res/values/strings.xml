@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Social De-Source</string>
+    <string name="enter_message">Type a meassage</string>
+    <string name="button_send">Send</string>
 </resources>
