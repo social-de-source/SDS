@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="16dp">
 
         <EditText
-            android:id="@+id/IP Input"
+            android:id="@+id/Input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.0"
@@ -23,7 +23,7 @@
             android:text="Name" />
 
         <TextView
-            android:id="@+id/Chathistory Placeholder"
+            android:id="@+id/ChathistoryPlaceholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.95"
@@ -41,7 +41,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/Message Imput"
+                android:id="@+id/MessageImput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
@@ -50,10 +50,9 @@
                 android:text="Name" />
 
             <Button
-                android:id="@+id/Send Button"
+                android:id="@+id/SendButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:
                 android:text="Button" />
         </LinearLayout>
     </LinearLayout>
