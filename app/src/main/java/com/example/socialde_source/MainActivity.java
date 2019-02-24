@@ -27,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
         EditText editText1 = findViewById(R.id.Input);
         String localip = editText1.getText().toString();
         Log.d( "log",localip);
-        new SendMessageTask(localip, message).execute();
+        new SendMessageTask(localip, message).start();
     }
 }
 
-class SendMessageTask extends AsyncTask<String, Integer, Long> {
+class SendMessageTask extends Thread {
 
     String localip;
     String message;
@@ -42,7 +42,7 @@ class SendMessageTask extends AsyncTask<String, Integer, Long> {
         this.message = message;
     }
 
-    protected Long doInBackground(String... urls) {
+    public void run() {
         try {
             InetAddress address = InetAddress.getByName(localip);
             byte[] b = message.getBytes();
@@ -55,17 +55,9 @@ class SendMessageTask extends AsyncTask<String, Integer, Long> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0L;
-    }
-
-    protected void onProgressUpdate(Integer... progress) {
-        // setProgressPercent(progress[0]);
-    }
-
-    protected void onPostExecute(Long result) {
-        // showDialog("Downloaded " + result + " bytes");
     }
 }
+
 class RecieveMessageTask extends AsyncTask<String, String, Long> {
 
     TextView chat;
