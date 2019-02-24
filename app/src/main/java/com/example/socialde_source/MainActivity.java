@@ -1,8 +1,10 @@
 package com.example.socialde_source;
 
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,9 +19,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView loclaIP = findViewById(R.id.IPOutput);
+        WifiManager wm = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+        loclaIP.setText("This is your IP-Address: " + ip);
         new RecieveMessageTask((TextView)findViewById(R.id.tvChat)) .execute();
 
     }
+
     public void onSend(android.view.View view) {
         EditText editText = findViewById(R.id.Message); //Groß=Klasse, klein=Datentyp
         String message = editText.getText().toString();
