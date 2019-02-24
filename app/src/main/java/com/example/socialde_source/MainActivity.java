@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
     public void onSend(android.view.View view) {
         EditText editText = findViewById(R.id.Message); //Groß=Klasse, klein=Datentyp
         String message = editText.getText().toString();
+        editText.setText("");
         Log.d("log",message);
+
         EditText editText1 = findViewById(R.id.Input);
         String localip = editText1.getText().toString();
         Log.d( "log",localip);
@@ -76,7 +78,7 @@ class RecieveMessageTask extends AsyncTask<String, String, Long> {
                 Log.d( "log","Waiting vor Message");
                 serverSocket.receive(receivePacket);
                 byte[] slice = Arrays.copyOfRange(receivePacket.getData(), 0, receivePacket.getLength());
-                String sentence = new String(slice);
+                String sentence = receivePacket.getAddress().toString().substring(1) + ": " + new String(slice) + System.getProperty("line.separator");
                 publishProgress(sentence);
 
             }
